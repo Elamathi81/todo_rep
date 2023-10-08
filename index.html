@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Add some basic styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-image: url('todo1.jpg'); /* Replace 'your-image.jpg' with the actual image file path */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.header {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#my-input {
+  width: 70%;
+  padding: 10px;
+  border: none;
+}
+
+.add-btn {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style completed tasks with a straight line */
+.checked {
+  text-decoration: line-through;
+  color: #888;
+  text-decoration-skip-ink: none; /* Prevent overline on some browsers */
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div id="my-div" class="header">
+  <h2 style="margin:5px">My To-Do List</h2>
+  <input type="text" id="my-input" placeholder="Title...">
+  <span onclick="newElement()" class="add-btn">Add</span>
+</div>
+
+<ul id="my-ul">
+  <li onclick="toggleTask(this)">Hit the gym</li>
+  <li class="checked" onclick="toggleTask(this)">Pay bills</li>
+  <li onclick="toggleTask(this)">Meet George</li>
+  <li onclick="toggleTask(this)">Buy eggs</li>
+  <li onclick="toggleTask(this)">Read a book</li>
+  <li onclick="toggleTask(this)">Organize office</li>
+</ul>
+
+<script>
+// Function to create a new task
+function newElement() {
+  var input = document.getElementById("my-input");
+  var ul = document.getElementById("my-ul");
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(input.value));
+  ul.appendChild(li);
+  input.value = "";
+
+  li.onclick = function() {
+    toggleTask(li);
+  };
+}
+
+// Function to toggle the "checked" class
+function toggleTask(task) {
+  task.classList.toggle("checked");
+}
+</script>
+
+</body>
+</html>
